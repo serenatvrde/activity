@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- bulma CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+
+    <!-- font awesome cdn -->
+    <script
+      src="https://kit.fontawesome.com/8a80b728dc.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Firestore Soccer Teams Activity</title>
+  </head>
+
+  <body>
+    <!-- add teams -->
+    <div class="p-4 m-3 has-background-grey-lighter">
+      <h1 class="title">Add soccer teams to Firestore</h1>
+      <p class="mb-3">
+        Click the button below once to add the 7 teams required for the
+        activity.
+      </p>
+      <button id="add_teams" class="button is-primary">Add Teams</button>
+    </div>
+
+    <!-- all teams -->
+    <div class="p-4 m-3 has-background-grey-lighter">
+      <h1 class="title">All teams stored in the database</h1>
+      <button id="show_all" class="button is-info mb-3">Show All Teams</button>
+      <div id="all_teams"></div>
+    </div>
+
+    <!-- queries -->
+    <div class="p-4 m-3 has-background-grey-lighter">
+      <h1 class="title">Run Queries</h1>
+
+      <div class="buttons">
+        <button id="q1" class="button is-link">1. Teams in Spain</button>
+        <button id="q2" class="button is-link">
+          2. Teams in Madrid, Spain
+        </button>
+        <button id="q3" class="button is-link">3. National teams</button>
+        <button id="q4" class="button is-link">4. Teams not in Spain</button>
+        <button id="q5" class="button is-link">
+          5. Teams not in Spain or England
+        </button>
+        <button id="q6" class="button is-link">
+          6. Spain teams with fans over 700M
+        </button>
+        <button id="q7" class="button is-link">
+          7. Teams with fans between 500M and 600M
+        </button>
+        <button id="q8" class="button is-link">
+          8. Teams where Ronaldo is a top scorer
+        </button>
+        <button id="q9" class="button is-link">
+          9. Teams where Ronaldo, Maradona, or Messi is a top scorer
+        </button>
+      </div>
+
+      <div id="query_results"></div>
+    </div>
+
+    <!-- updates -->
+    <div class="p-4 m-3 has-background-grey-lighter">
+      <h1 class="title">Run Updates</h1>
+
+      <div class="buttons">
+        <button id="update_data" class="button is-warning">
+          Run assignment updates
+        </button>
+      </div>
+
+      <p>
+        This will update Real Madrid and Barcelona fans, names, top scorers, and
+        jersey colors.
+      </p>
+    </div>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <script>
+      // Copy only your own firebaseConfig here
+      const firebaseConfig = {
+        apiKey: "AIzaSyB4JTyc6PB6gCE42lks3d0gtzdmzcoC3eY",
+        authDomain: "query-activity-94f41.firebaseapp.com",
+        projectId: "query-activity-94f41",
+        storageBucket: "query-activity-94f41.firebasestorage.app",
+        messagingSenderId: "363109215959",
+        appId: "1:363109215959:web:02a72b681367e6dd18ca92",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // define authentication variable
+      let auth = firebase.auth();
+      let db = firebase.firestore();
+
+      // define a storage reference
+      let ref = firebase.storage().ref();
+    </script>
+
+    <!-- make sure to add your own js file as the last line -->
+    <script src="app.js"></script>
+  </body>
+</html>
